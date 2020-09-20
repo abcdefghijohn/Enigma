@@ -25,6 +25,13 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     Date.stubs(:today).returns(Date.new(2020, 9, 20))
 
-    assert_equal '200920', enigma.generate_date 
+    assert_equal '200920', enigma.generate_date
+  end
+
+  def test_it_can_get_keys
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(8472)
+
+    assert_equal '08472', enigma.generate_key
   end
 end
