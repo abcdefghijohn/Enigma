@@ -1,0 +1,15 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/johnk/mod_1/projects/Enigma/lib/enigma.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1600568612
+  }
+}
