@@ -9,6 +9,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_returns_an_encrypted_message
+    skip
     enigma = Engima.new
 
     expected = {
@@ -18,5 +19,12 @@ class EnigmaTest < Minitest::Test
                }
 
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_it_can_get_date
+    enigma = Enigma.new
+    Date.stubs(:today).returns(Date.new(2020, 9, 20))
+
+    assert_equal '200920', enigma.generate_date 
   end
 end
