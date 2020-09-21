@@ -26,6 +26,15 @@ class Enigma
     [a,b,c,d]
   end
 
+  def generate_shifts(date, key)
+    numbers = key.map do |number|
+      number.to_i
+    end
+    numbers.zip(date).map do |offset, key|
+      offset + key
+    end
+  end
+
 end
 
 
