@@ -8,7 +8,7 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_returns_an_encrypted_message_given_key_and_date
+  def test_it_can_encrypt_a_message_with_given_key_and_date
     enigma = Enigma.new
 
     expected = {
@@ -18,6 +18,60 @@ class EnigmaTest < Minitest::Test
                }
 
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_it_can_decrypt_a_message_with_given_key_and_date
+    enigma = Enigma.new
+
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
+  def test_it_can_encrypt_a_message_with_a_given_key
+    enigma = Enigma.new
+    todays_date = Date.new(2020, 9 , 21)
+    Date.stubs(:today).returns(todays_date)
+
+    expected = {
+      encryption: "pib wdmczpu",
+      key: "02715",
+      date: "210920"
+    }
+
+    assert_equal expected, enigma.encrypt("hello world", "02715")
+  end
+
+  def test_it_can_decrypt_a_message_with_a_given_key
+    enigma = Enigma.new
+    todays_date = Date.new(2020, 9 , 21)
+    Date.stubs(:today).returns(todays_date)
+
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "210920"
+    }
+
+    assert_equal expected, enigma.decrypt("pib wdmczpu", "02715")
+  end
+
+  def test_it_can_encrypt_a_message_with_a_key_and_date
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(2715)
+    Date.stubs(:today).returns(Date.new(2020, 9, 21))
+
+    expected = {
+      encryption: "pib wdmczpu",
+      key: "02715",
+      date: "210920"
+    }
+
+    assert_equal expected, enigma.encrypt("hello world")
   end
 
   def test_it_can_get_date
@@ -62,59 +116,5 @@ class EnigmaTest < Minitest::Test
 
     expected = [54, 88, 48, 85]
     assert_equal expected, enigma.generate_shifts(date_offset, key_offset)
-  end
-
-  def test_it_returns_a_decrypted_message_given_key_and_date
-    enigma = Enigma.new
-
-    expected = {
-                decryption: "hello world",
-                key: "02715",
-                date: "040895"
-               }
-
-    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
-  end
-
-  def test_it_can_encrypt_a_message_with_a_key
-    enigma = Enigma.new
-    todays_date = Date.new(2020, 9 , 21)
-    Date.stubs(:today).returns(todays_date)
-
-    expected = {
-                encryption: "pib wdmczpu",
-                key: "02715",
-                date: "210920"
-               }
-
-    assert_equal expected, enigma.encrypt("hello world", "02715")
-  end
-
-  def test_it_can_decrypt_a_message_with_a_key
-    enigma = Enigma.new
-    todays_date = Date.new(2020, 9 , 21)
-    Date.stubs(:today).returns(todays_date)
-
-    expected = {
-                decryption: "hello world",
-                key: "02715",
-                date: "210920"
-               }
-
-    assert_equal expected, enigma.decrypt("pib wdmczpu", "02715")
-  end
-
-  def test_it_can_encrypt_a_message_with_a_key_and_date
-    enigma = Enigma.new
-    enigma.stubs(:rand).returns(2715)
-    Date.stubs(:today).returns(Date.new(2020, 9, 21))
-
-    expected = {
-                encryption: "pib wdmczpu",
-                key: "02715",
-                date: "210920"
-               }
-
-    assert_equal expected, enigma.encrypt("hello world")
   end
 end
