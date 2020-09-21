@@ -53,7 +53,7 @@ class Enigma
     }
   end
 
-  def decrypt(decryption, key, date)
+  def decrypt(decryption, key, date = generate_date)
     decrypted = ""
     unshifts = generate_shifts(date_offset(date), key_offset(key))
     decryption.chars.each do |letter|
