@@ -64,4 +64,15 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.generate_shifts(date_offset, key_offset)
   end
 
+  def test_it_returns_a_decrypted_message_given_key_and_date
+    enigma = Enigma.new
+
+    expected = {
+                decryption: "hello world",
+                key: "02715",
+                date: "040895"
+               }
+
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+  end
 end
