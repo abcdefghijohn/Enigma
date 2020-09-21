@@ -18,6 +18,14 @@ class Enigma
     rand(9999).to_s.rjust(5, "0")
   end
 
+  def key_offset(key = generate_key)
+    a = key[0..1]
+    b = key[1..2]
+    c = key[2..3]
+    d = key[3..4]
+    [a,b,c,d]
+  end
+
 end
 
 
