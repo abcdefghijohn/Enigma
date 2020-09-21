@@ -34,7 +34,7 @@ class EnigmaTest < Minitest::Test
     assert_equal '08472', enigma.generate_key
   end
 
-  def test_it_can_get_last_four
+  def test_it_can_get_date_offset
     enigma = Enigma.new
     Date.stubs(:today).returns(Date.new(2020, 9, 20))
 
@@ -53,6 +53,15 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:generate_key).returns('00001')
 
     assert_equal ['00', '00', '00', '01'], enigma.key_offset
+  end
+
+  def test_it_can_get_shifts
+    enigma = Enigma.new
+    date_offset  = [6,4,0,0]
+    key_offset = ['48', '84', '48', '85']
+
+    expected = [54, 88, 48, 85]
+    assert_equal expected, enigma.generate_shifts(date_offset, key_offset)
   end
 
 end
