@@ -35,6 +35,24 @@ class Enigma
     end
   end
 
+  def encrypt(encryption, key, date)
+    encrypted = ""
+    shifts = generate_shifts(date_offset(date), key_offset(key))
+    encryption.chars.each do |letter|
+      encrypted << letter.tr(@alphabet.join, @alphabet.rotate(shifts[0]).join)
+      shifts.rotate!(1)
+    end
+    encrypted_message(encrypted, key, date)
+  end
+
+  def encrypted_message(encrypted, key, date)
+    {
+      encryption: encrypted,
+      key: key,
+      date: date
+    }
+  end
+
 end
 
 
