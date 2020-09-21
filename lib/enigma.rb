@@ -5,19 +5,25 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def generate_date_key
-    today = Date.today.strftime("%d%m%y")
-    today.to_i ** 2
+  def generate_date
+    Date.today.strftime("%d%m%y")
   end
 
-  def last_four_of_date
-    generate_date_key.digits.reverse[-4..-1]
+  def date_offset(date = generate_date)
+    squared = date.to_i ** 2
+    squared.digits.reverse[-4..-1]
   end
 
   def generate_key
     rand(9999).to_s.rjust(5, "0")
   end
+
 end
+
+
+# convert to integers
+# add shifts in order
+# then convert back chars
 
 
 

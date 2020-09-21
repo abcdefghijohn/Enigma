@@ -8,9 +8,8 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_returns_an_encrypted_message
-    skip
-    enigma = Engima.new
+  def test_it_returns_an_encrypted_message_given_key_and_date
+    enigma = Enigma.new
 
     expected = {
                 encryption: "keder ohulw",
@@ -21,11 +20,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
 
-  def test_it_can_get_date_key
+  def test_it_can_get_date
     enigma = Enigma.new
     Date.stubs(:today).returns(Date.new(2020, 9, 20))
 
-    assert_equal 40368846400, enigma.generate_date_key
+    assert_equal '200920', enigma.generate_date
   end
 
   def test_it_can_get_key
@@ -35,9 +34,11 @@ class EnigmaTest < Minitest::Test
     assert_equal '08472', enigma.generate_key
   end
 
-  def test_it_can_get_last_four
+  def test_it_can_get_date_offset
     enigma = Enigma.new
     Date.stubs(:today).returns(Date.new(2020, 9, 20))
-    assert_equal [6,4,0,0], enigma.last_four_of_date
+
+    assert_equal [6,4,0,0], enigma.date_offset
   end
+
 end
