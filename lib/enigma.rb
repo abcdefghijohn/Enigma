@@ -35,7 +35,7 @@ class Enigma
     end
   end
 
-  def encrypt(encryption, key, date)
+  def encrypt(encryption, key, date = generate_date)
     encrypted = ""
     shifts = generate_shifts(date_offset(date), key_offset(key))
     encryption.chars.each do |letter|
