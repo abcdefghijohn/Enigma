@@ -41,4 +41,11 @@ class EnigmaTest < Minitest::Test
     assert_equal [6,4,0,0], enigma.date_offset
   end
 
+  def test_it_can_key_offset
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(48485)
+
+    assert_equal ['48', '84', '48', '85'], enigma.key_offset
+  end
+
 end
