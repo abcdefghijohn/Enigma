@@ -12,10 +12,10 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
 
     expected = {
-                encryption: "keder ohulw",
-                key: "02715",
-                date: "040895"
-               }
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }
 
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
@@ -98,7 +98,7 @@ class EnigmaTest < Minitest::Test
   def test_it_can_key_offset
     enigma = Enigma.new
     enigma.stubs(:rand).returns(48485)
-
+    
     assert_equal ['48', '84', '48', '85'], enigma.key_offset
   end
 
