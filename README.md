@@ -6,11 +6,11 @@
 
 #### Table of Contents
 ----------------------
-- History 
-- Overview 
-- Encrypting
-- Decrypting 
-- Self Evaluation 
+- [History](https://github.com/abcdefghijohn/Enigma#history) 
+- [Overview](https://github.com/abcdefghijohn/Enigma#overview)
+- [Encrypting](https://github.com/abcdefghijohn/Enigma#encrypting)
+- [Decrypting](https://github.com/abcdefghijohn/Enigma#decrypting) 
+- [Self Evaluation](https://github.com/abcdefghijohn/Enigma#self-evaluation) 
 
 #### History 
 ------------
