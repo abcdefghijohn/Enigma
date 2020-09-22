@@ -75,7 +75,7 @@ Which would then return the decrypted text into the decrypted.txt file and retur
 - Stubs - I won't say I'm completely comfortable but I was able to use them quite a bit in this project and I feel more confident about them now.
 - Calling files - Last go around one of the parts of the Nightwriter project I had great difficulty with was calling files from the command line.
   I was able to practice it in Enigma and was very excited when my encrypt and decrypt functions were working. 
-- #zip, #rjust, #digits, #strftime, and #rotate were some of the new methods I used during this project. 
+- `#zip`, `#rjust`, `#digits`, `#strftime`, and `#rotate` were some of the new methods I used during this project. 
 
 **Things I'd do differently:**
 
